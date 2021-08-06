@@ -1,1 +1,1 @@
-"# stockAnalysis" 
+# stockAnalysis
