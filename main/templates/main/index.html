@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <script src="https://cdn.plot.ly/plotly.latest.min.js"></script>
+
+    <title>Stock Market Analysis</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+            <h2> <a class="navbar-brand" href="#">Stock Analysis</a></h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">=</button>
+            <div class="collapse navbar-collapse float-right" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container-fluid py-3">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row px-3">
+                    <div class="card-deck">
+                        <div class="card shadow">
+                            <div class="card-header rounded-top bg-info text-white">
+                                <h5 class="mb-0 card-title">{{title}}</h5>
+                            </div>
+                            <div class="card-body px-4 py-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{form.equity_name.label}}
+                                            {{form.equity_name}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{form.interval.label}}
+                                            {{form.interval}}
+                                        </div>
+                                        <div class="form-group">
+                                            {{form.period.label}}
+                                            {{form.period}}
+                                        </div>
+                                        <div class="form-group">
+                                            {{form.charts.label}}
+                                            {{form.charts}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow">
+                            <div class="card-header rounded-top bg-info text-white">
+                                <h5 class="mb-0 card-title">Indicators</h5>
+                            </div>
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="custom-control custom-switch">
+                                                    {{form.rsi}}
+                                                    <label class="custom-control-label" for="id_rsi">
+                                                        {{form.rsi.label}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{form.rsi_paramenter.label}}
+                                                    {{form.rsi_paramenter}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="custom-control custom-switch">
+                                                    {{form.macd}}
+                                                    <label class="custom-control-label" for="id_macd">
+                                                        {{form.macd.label}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{form.macd_paramenter.label}}
+                                                    {{form.macd_paramenter}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="custom-control custom-switch">
+                                                    {{form.ma1}}
+                                                    <label class="custom-control-label" for="id_ma1">
+                                                        {{form.ma1.label}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 py-2">
+                                                <select class="custom-select" id="ddlof">
+                                                    <option selected disabled value="">Choose...</option>
+                                                    <option value="1m">Open</option>
+                                                    <option value="15m">Close</option>
+                                                    <option value="1d">High</option>
+                                                    <option value="1wk">Low</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5 py-2">
+                                                <select class="custom-select" id="ddltype">
+                                                    <option selected disabled value="">Choose...</option>
+                                                    <option value="1m">Simple</option>
+                                                    <option value="15m">Exponential</option>
+                                                    <option value="1d">Triangular</option>
+                                                    <option value="1wk">Weighted</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 py-2">
+                                                <input type="text" class="form-control" id="txtMACDParameter"
+                                                    placeholder="26,12,9">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="custom-control custom-switch">
+                                                    {{form.ma2}}
+                                                    <label class="custom-control-label" for="id_ma2">
+                                                        {{form.ma2.label}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 py-2">
+                                                <select class="custom-select" id="ddlof">
+                                                    <option selected disabled value="">Choose...</option>
+                                                    <option value="1m">Open</option>
+                                                    <option value="15m">Close</option>
+                                                    <option value="1d">High</option>
+                                                    <option value="1wk">Low</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5 py-2">
+                                                <select class="custom-select" id="ddltype">
+                                                    <option selected disabled value="">Choose...</option>
+                                                    <option value="1m">Simple</option>
+                                                    <option value="15m">Exponential</option>
+                                                    <option value="1d">Triangular</option>
+                                                    <option value="1wk">Weighted</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 py-2">
+                                                <input type="text" class="form-control" id="txtMACDParameter"
+                                                    placeholder="26,12,9">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-4 py-3">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-info w-100" value="Update Chart">
+                    </div>
+                </div>
+            </form>
+            <div class="row overflow-auto">
+                {{chart | safe}}
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.plot.ly/plotly.latest.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
