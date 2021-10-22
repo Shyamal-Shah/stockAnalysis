@@ -29,8 +29,8 @@ PERIODS = (
     ('max', 'Max'),
 )
 CHARTS = (
-    ('candlestick', 'Candlestick'),
-    ('ohlc', 'OHLC'),
+    ('Candlestick', 'Candlestick'),
+    ('OHLC', 'OHLC'),
 )
 
 EQUITY_TYPES = (
@@ -44,42 +44,45 @@ EQUITY_TYPES = (
     ('TWTR', 'TWITTER'),
     ('CMCSA', 'COMCAST'),
     ('CSCO', 'CISCO'),
+    ('NSEI^', 'NIFTY')
 )
 
 
 class MainForm(forms.Form):
 
-    equity_name = forms.ChoiceField(
-        choices=EQUITY_TYPES, widget=forms.Select(attrs={'class': 'custom-select'}), label='Equity Name', required=True, initial='AAPL'
+    equityName = forms.ChoiceField(
+        choices=EQUITY_TYPES, widget=forms.Select(attrs={'class': 'custom-select'}), label='Equity Name', required=True, initial=EQUITY_TYPES[0][0]
     )
 
     interval = forms.ChoiceField(
-        choices=INTERVALS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Interval', required=True, initial='1m'
+        choices=INTERVALS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Interval', required=True, initial=INTERVALS[0][0]
     )
+
     period = forms.ChoiceField(
-        choices=PERIODS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Period', required=True, initial='1mo')
-    charts = forms.ChoiceField(
-        choices=CHARTS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Chart', required=True, initial='candlestick')
+        choices=PERIODS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Period', required=True, initial=PERIODS[0][0])
 
-    rsi = forms.BooleanField(widget=forms.CheckboxInput(attrs={
-                             'class': 'custom-control-input'}),
-                             required=False, label='RSI: Relative Strength Index', initial=False)
-    macd = forms.BooleanField(widget=forms.CheckboxInput(attrs={
-                              'class': 'custom-control-input'}),
-                              required=False, label='MACD: Moving Average Convergence Divergence', initial=False)
+    chartType = forms.ChoiceField(
+        choices=CHARTS, widget=forms.Select(attrs={'class': 'custom-select'}), label='Chart', required=True, initial=CHARTS[0][0])
 
-    ma1 = forms.BooleanField(widget=forms.CheckboxInput(attrs={
-                             'class': 'custom-control-input'}), required=False, label='MA1: Moving Average', initial=False)
-    ma2 = forms.BooleanField(widget=forms.CheckboxInput(attrs={
-                             'class': 'custom-control-input'}),
-                             required=False, label='MA2: Moving Average', initial=False)
+    rsiStatus = forms.BooleanField(widget=forms.CheckboxInput(attrs={
+        'class': 'custom-control-input'}),
+        required=False, label='RSI: Relative Strength Index', initial=False)
+    macdStatus = forms.BooleanField(widget=forms.CheckboxInput(attrs={
+        'class': 'custom-control-input'}),
+        required=False, label='MACD: Moving Average Convergence Divergence', initial=False)
 
-    rsi_paramenter = forms.IntegerField(
+    ma1Status = forms.BooleanField(widget=forms.CheckboxInput(attrs={
+        'class': 'custom-control-input'}), required=False, label='MA1: Moving Average', initial=False)
+    ma2Status = forms.BooleanField(widget=forms.CheckboxInput(attrs={
+        'class': 'custom-control-input'}),
+        required=False, label='MA2: Moving Average', initial=False)
+
+    rsiParameter = forms.IntegerField(
         required=False, min_value=1, max_value=100, label='RSI Parameter',
         initial='14', widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
 
-    macd_paramenter = forms.CharField(
+    macdParameters = forms.CharField(
         required=False, label='MACD Parameter',
-        initial='26, 12, 9', widget=forms.TextInput(attrs={'class': 'form-control'})
+        initial='12, 26, 9', widget=forms.TextInput(attrs={'class': 'form-control'})
     )

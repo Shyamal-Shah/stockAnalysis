@@ -44,8 +44,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {{form.equity_name.label}}
-                                            {{form.equity_name}}
+                                            {{form.equityName.label}}
+                                            {{form.equityName}}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -58,8 +58,8 @@
                                             {{form.period}}
                                         </div>
                                         <div class="form-group">
-                                            {{form.charts.label}}
-                                            {{form.charts}}
+                                            {{form.chartType.label}}
+                                            {{form.chartType}}
                                         </div>
                                     </div>
                                 </div>
@@ -75,30 +75,30 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="custom-control custom-switch">
-                                                    {{form.rsi}}
-                                                    <label class="custom-control-label" for="id_rsi">
-                                                        {{form.rsi.label}}</label>
+                                                    {{form.rsiStatus}}
+                                                    <label class="custom-control-label" for="id_rsiStatus">
+                                                        {{form.rsiStatus.label}}</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    {{form.rsi_paramenter.label}}
-                                                    {{form.rsi_paramenter}}
+                                                    {{form.rsiParameter.label}}
+                                                    {{form.rsiParameter}}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="custom-control custom-switch">
-                                                    {{form.macd}}
-                                                    <label class="custom-control-label" for="id_macd">
-                                                        {{form.macd.label}}</label>
+                                                    {{form.macdStatus}}
+                                                    <label class="custom-control-label" for="id_macdStatus">
+                                                        {{form.macdStatus.label}}</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    {{form.macd_paramenter.label}}
-                                                    {{form.macd_paramenter}}
+                                                    {{form.macdParameters.label}}
+                                                    {{form.macdParameters}}
                                                 </div>
                                             </div>
                                         </div>
@@ -107,9 +107,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="custom-control custom-switch">
-                                                    {{form.ma1}}
-                                                    <label class="custom-control-label" for="id_ma1">
-                                                        {{form.ma1.label}}</label>
+                                                    {{form.ma1Status}}
+                                                    <label class="custom-control-label" for="id_ma1Status">
+                                                        {{form.ma1Status.label}}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,15 +134,15 @@
                                             </div>
                                             <div class="col-md-4 py-2">
                                                 <input type="text" class="form-control" id="txtMACDParameter"
-                                                    placeholder="26,12,9">
+                                                    placeholder="26">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="custom-control custom-switch">
-                                                    {{form.ma2}}
-                                                    <label class="custom-control-label" for="id_ma2">
-                                                        {{form.ma2.label}}</label>
+                                                    {{form.ma2Status}}
+                                                    <label class="custom-control-label" for="id_ma2Status">
+                                                        {{form.ma2Status.label}}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             </div>
                                             <div class="col-md-4 py-2">
                                                 <input type="text" class="form-control" id="txtMACDParameter"
-                                                    placeholder="26,12,9">
+                                                    placeholder="26">
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                 </div>
                 <div class="row px-4 py-3">
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-info w-100" value="Update Chart">
+                        <input type="submit" class="btn btn-info w-100 shadow" value="Update Chart">
                     </div>
                 </div>
             </form>
