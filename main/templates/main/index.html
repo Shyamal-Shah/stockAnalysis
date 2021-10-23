@@ -18,15 +18,6 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-info">
             <h2> <a class="navbar-brand" href="#">Stock Analysis</a></h2>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">=</button>
-            <div class="collapse navbar-collapse float-right" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-            </div>
         </nav>
     </header>
 
@@ -114,27 +105,20 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3 py-2">
-                                                <select class="custom-select" id="ddlof">
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option value="1m">Open</option>
-                                                    <option value="15m">Close</option>
-                                                    <option value="1d">High</option>
-                                                    <option value="1wk">Low</option>
-                                                </select>
+                                            <div class="col-md-4 py-2">
+                                                <div class="form-group">
+                                                    {{form.ma1Parameter}}
+                                                </div>
                                             </div>
                                             <div class="col-md-5 py-2">
-                                                <select class="custom-select" id="ddltype">
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option value="1m">Simple</option>
-                                                    <option value="15m">Exponential</option>
-                                                    <option value="1d">Triangular</option>
-                                                    <option value="1wk">Weighted</option>
-                                                </select>
+                                                <div class="form-group">
+                                                    {{form.ma1Type}}
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 py-2">
-                                                <input type="text" class="form-control" id="txtMACDParameter"
-                                                    placeholder="26">
+                                            <div class="col-md-3 py-2">
+                                                <div class="form-group">
+                                                    {{form.ma1Period}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -147,27 +131,20 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3 py-2">
-                                                <select class="custom-select" id="ddlof">
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option value="1m">Open</option>
-                                                    <option value="15m">Close</option>
-                                                    <option value="1d">High</option>
-                                                    <option value="1wk">Low</option>
-                                                </select>
+                                            <div class="col-md-4 py-2">
+                                                <div class="form-group">
+                                                    {{form.ma2Parameter}}
+                                                </div>
                                             </div>
                                             <div class="col-md-5 py-2">
-                                                <select class="custom-select" id="ddltype">
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option value="1m">Simple</option>
-                                                    <option value="15m">Exponential</option>
-                                                    <option value="1d">Triangular</option>
-                                                    <option value="1wk">Weighted</option>
-                                                </select>
+                                                <div class="form-group">
+                                                    {{form.ma2Type}}
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 py-2">
-                                                <input type="text" class="form-control" id="txtMACDParameter"
-                                                    placeholder="26">
+                                            <div class="col-md-3 py-2">
+                                                <div class="form-group">
+                                                    {{form.ma2Period}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
