@@ -12,6 +12,70 @@
     <script src="https://cdn.plot.ly/plotly.latest.min.js"></script>
 
     <title>Stock Market Analysis</title>
+
+    <script>
+        function isFormValid() {
+            const interval = document.getElementsByName("interval")[0].value;
+            const period = document.getElementsByName("period")[0].value;
+            const macdStatus = document.getElementsByName("macdStatus")[0].checked;
+            const macdParameters = document.getElementsByName("macdParameters")[0].value;
+            const rsiStatus = document.getElementsByName("rsiStatus")[0].checked;
+            const rsiParameter = document.getElementsByName("rsiParameter")[0].value;
+            const ma1Status = document.getElementsByName("ma1Status")[0].checked;
+            const ma1Period = document.getElementsByName("ma1Period")[0].value;
+            const ma2Status = document.getElementsByName("ma2Status")[0].checked;
+            const ma2Period = document.getElementsByName("ma2Period")[0].value;
+
+            if (period != "1d" && period != "5d") {
+
+                if (interval == "1m" || interval == "2m" || interval == "5m" || interval == "15m" || interval == "30m" || interval == "1h") {
+                    alert(" Only 5 days worth of intraday granularity data are allowed.")
+                    return false;
+                }
+            }
+
+            if (macdStatus) {
+                if (macdParameters == "") {
+                    alert("Please enter MACD parameters.");
+                    return false;
+                } else if (macdParameters.split(",").length != 3) {
+                    alert("Please enter 3 MACD parameters.");
+                    return false;
+                } else {
+                    var macdParametersArray = macdParameters.split(",");
+                    for (var i = 0; i < 3; i++) {
+                        if (isNaN(parseInt(macdParametersArray[i]))) {
+                            alert("Please enter valid MACD parameters.");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            if (rsiStatus) {
+                if (rsiParameter == "") {
+                    alert("Please enter RSI parameters.");
+                    return false;
+                }
+            }
+
+            if (ma1Status) {
+                if (ma1Period == "") {
+                    alert("Please enter MA1 parameters.");
+                    return false;
+                }
+            }
+
+            if (ma2Status) {
+                if (ma2Period == "") {
+                    alert("Please enter MA2 parameters.");
+                    return false;
+                }
+            }
+            
+        }
+    </script>
+
 </head>
 
 <body>
@@ -155,7 +219,8 @@
                 </div>
                 <div class="row px-4 py-3">
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-info w-100 shadow" value="Update Chart">
+                        <input type="submit" onclick="return isFormValid();" class="btn btn-info w-100 shadow"
+                            value="Update Chart">
                     </div>
                 </div>
             </form>

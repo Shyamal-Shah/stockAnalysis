@@ -294,7 +294,7 @@ def updateChart(form):
             xanchor="right",
             x=1
         ),
-        height=1300,
+        height=1300 if plotCount > 2 else 800,
         width=1500,
     )
 

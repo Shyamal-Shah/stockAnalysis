@@ -39,7 +39,7 @@ class Indicators (models.Model):
     )
     id = models.UUIDField(default=uuid.uuid4,
                           primary_key=True, unique=True, editable=True)
-    interval = models.CharField(max_length=200, choices=INTERVALS)
+    interval = models.CharField(max_length=200, choices=INTERVALS, default='1m')
     period = models.CharField(max_length=200, choices=PERIODS)
     type = models.CharField(max_length=200, choices=CHARTS)
     rsi = models.BooleanField(default=False)
